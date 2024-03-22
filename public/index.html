@@ -10,12 +10,12 @@
                     if (idn > nextid) nextid = idn
                     return `
                     <div><div class="cikk">${u.author}: ${u.title}</div>
-                    <button type="button" class="button" onclick="logic.view('${u.id}','${u.author}','${u.title}','${u.content}')">Megnéz</button>
-                    <button type="button" onclick="logic.edit('${u.id}','${u.author}','${u.title}','${u.content}')">Módosít</button>
+                    <button type="button" class="button" onclick="logic.view('${u.id}','${u.author}','${u.title}','${u.content.replaceAll('\n', '<br>')}')">Megnéz</button>
+                    <button type="button" onclick="logic.edit('${u.id}','${u.author}','${u.title}','${u.content.replaceAll('\n', '<br>')}')">Módosít</button>
                     <button onclick="logic.delete('${u.id}')">Töröl</button></div>
                     `
                 }).join("")
-                nextid = (nextid + 1).toString()
+                nextid++
             })
         },
         edit(id, author, title, content) {
