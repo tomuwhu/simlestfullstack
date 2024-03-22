@@ -1,31 +1,69 @@
 <script>
-    x = id => document.getElementById(id)
+    const x = id => document.getElementById(id)
+    var nextid = 0
     logic = {
-        f() {
+        list() {
             fetch("http://localhost:3000/posts").then(v => v.json()).then(v => {
-                x("cont").innerHTML = v.map(u => `<div onclick="logic.g('${u.id}','${u.author}','${u.title}')">${u.author}: ${u.title}</div>`).join("")
+                nextid = 0
+                x("cont").innerHTML = v.map(u => {
+                    idn = Number(u.id)
+                    if (idn > nextid) nextid = idn
+                    return `
+                    <div><div 
+                        class="cikk" 
+                        onclick="logic.edit('${u.id}','${u.author}','${u.title}','${u.content}')">${u.author}: ${u.title}</div>
+                    <button
+                        onclick="logic.delete('${u.id}')"
+                    >Töröl</button></div>
+                    `
+                }).join("")
+                nextid = (nextid + 1).toString()
             })
         },
-        g(id, author, title) {
-            document.getElementById("cont").innerHTML = `
+        edit(id, author, title, content) {
+            x("cont").innerHTML = `
                 <form>
                     <input id="i_author" value='${author}' /><br><input id="i_title" value='${title}' /><br>
-                    <button class="button" onclick="logic.put('${id}')">Ment</button>
+                    <textarea id="i_content" >${content}</textarea><br>
+                    <button class="button" onclick="logic.put('${id}')">Ment</button> - <button class="button">Vissza - mentés nélkül</button>
                 </form>
             `
+            x("ub").style.display = "none"
         },
         put(id) {
-            toput = {id, author: x('i_author').value, title: x('i_title').value}
+            toput = {id, author: x('i_author').value, title: x('i_title').value, content: x('i_content').value}
             fetch(`http://localhost:3000/posts/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(toput)
             })
+        },
+        create() {
+            document.getElementById("cont").innerHTML = `
+                <form>
+                    <input id="in_author"/><br><input id="in_title"/><br>
+                    <textarea id="in_content"></textarea><br>
+                    <button class="button" onclick="logic.post('${nextid}')">Ment</button> - <button class="button">Vissza - mentés nélkül</button>
+                </form>
+            `
+            x("ub").style.display = "none"
+        },
+        post(id) {
+            topost = {id, author: x('in_author').value, title: x('in_title').value, content: x('in_content').value}
+            fetch(`http://localhost:3000/posts/`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(topost)
+            })
+        },
+        delete(id) {
+            fetch(`http://localhost:3000/posts/${id}`,{method: "DELETE"})
         }
     }
 </script>
 <link rel="stylesheet" href="style.css">
-<body onload="logic.f()">
-    <h1>Cica</h1>
-    <div id="cont"></div>    
+<body onload="logic.list()">
+    <h1>Cikkek</h1>
+    <div id="cont"></div>
+    <button id="ub" class="button" onclick="logic.create(nextid)">Új cikk</button>
 </body>

@@ -3,17 +3,20 @@
     {
       "id": 1,
       "author": "typicode",
-      "title": "json-server"
+      "title": "json-server",
+      "content": "Cicadfg"
     },
     {
       "id": 2,
+      "author": "drtamas",
       "title": "serve wits static html & purejs ",
-      "author": "drtamas"
+      "content": "dfgdfg"
     },
     {
       "id": 3,
+      "author": "drtamas",
       "title": "using json-server as backend node api like express",
-      "author": "drtamas"
+      "content": "dfgdfgfdg"
     }
   ]
 }

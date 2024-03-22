@@ -14,10 +14,7 @@ body {
     border-radius: 14px;
     padding: 10px;
     margin: 5px;
-    cursor: pointer;
-}
-#cont div:hover {
-    background-color: aqua;
+
 }
 input, .button {
     border: solid 1px black;
@@ -32,4 +29,17 @@ input, .button {
 }
 .button:hover {
     background-color: brown;
+}
+textarea {
+    width: 90%;
+    height: 300px;
+    border-radius: 15px;
+    padding: 14px;
+}
+.cikk {
+    display: inline-block;
+    cursor: pointer;
+}
+div.cikk:hover {
+    background-color: aqua;
 }
