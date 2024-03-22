@@ -9,26 +9,25 @@ body {
     background-color: rgb(202, 175, 175);
 }
 #cont div {
-    border: solid 1px black;
+    font-size: 19px;
     background-color: aliceblue;
     border-radius: 14px;
     padding: 10px;
     margin: 5px;
-
+    user-select: none;
 }
-input, .button {
+button, input, .button {
     border: solid 1px black;
-    width: 400px;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 14px;
+    padding: 6px;
+    margin: 3px;
+    border-radius: 7px;
 }
-.button {
+input {
+    width: 500px;
+}
+button, .button {
     display: inline-block;
     cursor: pointer;
-}
-.button:hover {
-    background-color: brown;
 }
 textarea {
     width: 90%;
@@ -42,4 +41,7 @@ textarea {
 }
 div.cikk:hover {
     background-color: aqua;
+}
+button:hover, div.button:hover {
+    background-color: rgb(215, 145, 145);
 }

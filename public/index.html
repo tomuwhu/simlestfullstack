@@ -9,12 +9,10 @@
                     idn = Number(u.id)
                     if (idn > nextid) nextid = idn
                     return `
-                    <div><div 
-                        class="cikk" 
-                        onclick="logic.edit('${u.id}','${u.author}','${u.title}','${u.content}')">${u.author}: ${u.title}</div>
-                    <button
-                        onclick="logic.delete('${u.id}')"
-                    >Töröl</button></div>
+                    <div><div class="cikk">${u.author}: ${u.title}</div>
+                    <button type="button" class="button" onclick="logic.view('${u.id}','${u.author}','${u.title}','${u.content}')">Megnéz</button>
+                    <button type="button" onclick="logic.edit('${u.id}','${u.author}','${u.title}','${u.content}')">Módosít</button>
+                    <button onclick="logic.delete('${u.id}')">Töröl</button></div>
                     `
                 }).join("")
                 nextid = (nextid + 1).toString()
@@ -26,6 +24,16 @@
                     <input id="i_author" value='${author}' /><br><input id="i_title" value='${title}' /><br>
                     <textarea id="i_content" >${content}</textarea><br>
                     <button class="button" onclick="logic.put('${id}')">Ment</button> - <button class="button">Vissza - mentés nélkül</button>
+                </form>
+            `
+            x("ub").style.display = "none"
+        },
+        view(id, author, title, content) {
+            x("cont").innerHTML = `
+                <h4>${author}: ${title}</h4><br>
+                ${content}<br><hr><br>
+                <form>
+                <button class="button">Vissza</button>
                 </form>
             `
             x("ub").style.display = "none"
@@ -64,6 +72,6 @@
 <link rel="stylesheet" href="style.css">
 <body onload="logic.list()">
     <h1>Cikkek</h1>
-    <div id="cont"></div>
+    <div id="cont"></div><br>
     <button id="ub" class="button" onclick="logic.create(nextid)">Új cikk</button>
 </body>
