@@ -1,0 +1,26 @@
+<script>
+    x = id => document.getElementById(id)
+    logic = {
+        f() {
+            fetch("http://localhost:3000/posts").then(v => v.json()).then(v => {
+                x("cont").innerHTML = v.map(u => `<div onclick="logic.g('${u.id}','${u.author}','${u.title}')">${u.author}: ${u.title}</div>`).join("")
+            })
+        },
+        g(id, author, title) {
+            document.getElementById("cont").innerHTML = `
+                <form>
+                    <input id="i_author" value='${author}' /><br><input id="i_title" value='${title}' /><br>
+                    <div class="button" onclick="logic.put('${id}')">Ment</div>
+                </form>
+            `
+        },
+        put(id) {
+            console.log('ToPUT', {id, author: x('i_author').value, title: x('i_title').value})
+        }
+    }
+</script>
+<link rel="stylesheet" href="style.css">
+<body onload="logic.f()">
+    <h1>Cica</h1>
+    <div id="cont"></div>    
+</body>

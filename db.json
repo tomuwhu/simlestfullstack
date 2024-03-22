@@ -1,0 +1,7 @@
+{
+    "posts": [
+        { "id": 1, "title": "json-server", "author": "typicode" },
+        { "id": 2, "title": "serve wits static html & purejs ", "author": "drtamas" },
+        { "id": 3, "title": "using json-server as backend node api like express", "author": "drtamas" }
+    ]
+}

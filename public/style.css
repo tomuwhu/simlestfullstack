@@ -1,0 +1,34 @@
+body {
+    text-align: center;
+    background-color: beige;
+}
+#cont {
+    border: solid 1px black;
+    border-radius: 14px;
+    padding: 3px;
+    background-color: rgb(202, 175, 175);
+}
+#cont div {
+    border: solid 1px black;
+    background-color: aliceblue;
+    border-radius: 14px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+#cont div:hover {
+    background-color: aqua;
+}
+input, button {
+    border: solid 1px black;
+    width: 400px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 14px;
+}
+button {
+    cursor: pointer;
+}
+button:hover {
+    background-color: brown;
+}
