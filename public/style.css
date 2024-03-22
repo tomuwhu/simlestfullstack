@@ -19,16 +19,17 @@ body {
 #cont div:hover {
     background-color: aqua;
 }
-input, button {
+input, .button {
     border: solid 1px black;
     width: 400px;
     padding: 10px;
     margin: 5px;
     border-radius: 14px;
 }
-button {
+.button {
+    display: inline-block;
     cursor: pointer;
 }
-button:hover {
+.button:hover {
     background-color: brown;
 }
