@@ -10,12 +10,17 @@
             document.getElementById("cont").innerHTML = `
                 <form>
                     <input id="i_author" value='${author}' /><br><input id="i_title" value='${title}' /><br>
-                    <div class="button" onclick="logic.put('${id}')">Ment</div>
+                    <button class="button" onclick="logic.put('${id}')">Ment</button>
                 </form>
             `
         },
         put(id) {
-            console.log('ToPUT', {id, author: x('i_author').value, title: x('i_title').value})
+            toput = {id, author: x('i_author').value, title: x('i_title').value}
+            fetch(`http://localhost:3000/posts/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(toput)
+            })
         }
     }
 </script>
